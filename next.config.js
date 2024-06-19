@@ -2,9 +2,9 @@
 const { PHASE_PRODUCTION_BUILD, PHASE_EXPORT } = require('next/constants')
 
 const mode = process.env.NEXT_PUBLIC_BUILD_MODE
-const basePath = process.env.EXPORT_BASE_PATH || ''
-const apiKey = process.env.GEMINI_API_KEY || ''
-const uploadProxyUrl = process.env.GEMINI_UPLOAD_BASE_URL || 'https://generativelanguage.googleapis.com'
+const basePath = process.env.NEXT_PUBLIC_EXPORT_BASE_PATH || ''
+const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || ''
+const uploadProxyUrl = process.env.NEXT_PUBLIC_GEMINI_UPLOAD_BASE_URL || 'https://generativelanguage.googleapis.com'
 
 /** @type {(phase: string, defaultConfig: import("next").NextConfig) => Promise<import("next").NextConfig>} */
 module.exports = async (phase) => {
@@ -27,32 +27,32 @@ module.exports = async (phase) => {
       return {
         beforeFiles: apiKey
           ? [
-              {
-                source: '/api/google/upload/v1beta/files',
-                has: [
-                  {
-                    type: 'query',
-                    key: 'uploadType',
-                    value: '(?<uploadType>.*)',
-                  },
-                ],
-                destination: `${uploadProxyUrl}/upload/v1beta/files?key=${apiKey}&uploadType=:uploadType`,
-              },
-              {
-                source: '/api/google/v1beta/files/:id',
-                destination: `${uploadProxyUrl}/v1beta/files/:id?key=${apiKey}`,
-              },
-            ]
+            {
+              source: '/api/google/upload/v1beta/files',
+              has: [
+                {
+                  type: 'query',
+                  key: 'uploadType',
+                  value: '(?<uploadType>.*)',
+                },
+              ],
+              destination: `${uploadProxyUrl}/upload/v1beta/files?key=${apiKey}&uploadType=:uploadType`,
+            },
+            {
+              source: '/api/google/v1beta/files/:id',
+              destination: `${uploadProxyUrl}/v1beta/files/:id?key=${apiKey}`,
+            },
+          ]
           : [
-              {
-                source: '/api/google/upload/v1beta/files',
-                destination: '/api/upload/files',
-              },
-              {
-                source: '/api/google/v1beta/files/:path',
-                destination: '/api/upload/files?id=:path',
-              },
-            ],
+            {
+              source: '/api/google/upload/v1beta/files',
+              destination: '/api/upload/files',
+            },
+            {
+              source: '/api/google/v1beta/files/:path',
+              destination: '/api/upload/files?id=:path',
+            },
+          ],
       }
     }
   }
