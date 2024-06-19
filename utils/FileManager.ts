@@ -14,7 +14,7 @@ class FileManager {
       throw new Error('Missing required parameters!')
     }
     this.options = options
-    this.uploadBaseUrl = this.options.uploadUrl || 'https://trial.kewong.workers.dev'
+    this.uploadBaseUrl = this.options.uploadUrl || 'https://generativelanguage.googleapis.com'
   }
   async createUploadSession(fileName: string, mimeType: string) {
     const res = await fetch(
@@ -104,7 +104,7 @@ class FileManager {
           uploadUrl = location.origin + url.pathname + url.search
         }
         if (this.uploadBaseUrl) {
-          uploadUrl = uploadUrl.replace('https://trial.kewong.workers.dev', this.uploadBaseUrl)
+          uploadUrl = uploadUrl.replace('https://generativelanguage.googleapis.com', this.uploadBaseUrl)
         }
 
         let uploadedByte = 0
