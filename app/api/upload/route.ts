@@ -7,9 +7,9 @@ import { isNull } from 'lodash-es'
 export const runtime = 'edge'
 export const preferredRegion = ['cle1', 'iad1', 'pdx1', 'sfo1', 'sin1', 'syd1', 'hnd1', 'kix1']
 
-const geminiApiKey = process.env.GEMINI_API_KEY as string
-const geminiApiBaseUrl = process.env.GEMINI_API_BASE_URL || 'https://generativelanguage.googleapis.com'
-const geminiUploadProxyUrl = process.env.GEMINI_UPLOAD_BASE_URL || 'https://generativelanguage.googleapis.com'
+const geminiApiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY as string
+const geminiApiBaseUrl = process.env.NEXT_PUBLIC_GEMINI_API_BASE_URL || 'https://generativelanguage.googleapis.com'
+const geminiUploadProxyUrl = process.env.NEXT_PUBLIC_GEMINI_UPLOAD_BASE_URL || 'https://generativelanguage.googleapis.com'
 
 export async function POST(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams

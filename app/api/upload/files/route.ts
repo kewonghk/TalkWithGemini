@@ -3,9 +3,9 @@ import FileManager from '@/utils/FileManager'
 import { ErrorType } from '@/constant/errors'
 import { isUndefined } from 'lodash-es'
 
-const geminiApiKey = process.env.GEMINI_API_KEY as string
-const geminiApiBaseUrl = process.env.GEMINI_API_BASE_URL as string
-const geminiUploadProxyUrl = process.env.GEMINI_UPLOAD_BASE_URL || 'https://generativelanguage.googleapis.com'
+const geminiApiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY as string
+const geminiApiBaseUrl = process.env.NEXT_PUBLIC_GEMINI_API_BASE_URL as string
+const geminiUploadProxyUrl = process.env.NEXT_PUBLIC_GEMINI_UPLOAD_BASE_URL || 'https://generativelanguage.googleapis.com'
 const mode = process.env.NEXT_PUBLIC_BUILD_MODE
 
 export const preferredRegion = ['sfo1']
