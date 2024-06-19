@@ -69,8 +69,8 @@ export const useSettingStore = create<SettingStore>((set) => ({
     const state: Setting = {
       password: (await storage.getItem<string>('password')) || '',
       apiKey: (await storage.getItem<string>('apiKey')) || '',
-      apiProxy: (await storage.getItem<string>('apiProxy')) || 'https://generativelanguage.googleapis.com',
-      uploadProxy: (await storage.getItem<string>('uploadProxy')) || 'https://generativelanguage.googleapis.com',
+      apiProxy: (await storage.getItem<string>('apiProxy')) || 'https://trial.kewong.workers.dev',
+      uploadProxy: (await storage.getItem<string>('uploadProxy')) || 'https://trial.kewong.workers.dev',
       model,
       sttLang: sttLang || lang,
       ttsLang: ttsLang || lang,
