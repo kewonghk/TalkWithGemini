@@ -5,7 +5,7 @@ import { isUndefined } from 'lodash-es'
 
 const geminiApiKey = process.env.GEMINI_API_KEY as string
 const geminiApiBaseUrl = process.env.GEMINI_API_BASE_URL as string
-const geminiUploadProxyUrl = process.env.GEMINI_UPLOAD_BASE_URL || 'https://generativelanguage.googleapis.com'
+const geminiUploadProxyUrl = process.env.GEMINI_UPLOAD_BASE_URL || 'https://us-central1-aiplatform.googleapis.com'
 const mode = process.env.NEXT_PUBLIC_BUILD_MODE
 
 export const preferredRegion = ['sfo1']
