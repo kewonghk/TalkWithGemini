@@ -83,7 +83,7 @@
     "macOSPrivateApi": true,
     "windows": [
       {
-        "title": "Talk with MedGPT",
+        "title": "Talk with Dr Recheck",
         "width": 1024,
         "height": 768,
         "minWidth": 375,
